@@ -1,15 +1,24 @@
+var triangle = function(x, y, z){
+  if (isTriangle(x, y, z)){
+    return triangleType(x, y, z)
+  } else {
+    return "is not";
+  }
+};
 
+var isTriangle = function(x, y, z) {
+  return x + y > z && y + z > x && x + z > y
+}
 
-var triangle = function(x, y, z) {
-  if (x + y <= z || y + z <= x || x + z <= y){
-    return "not a";
-  } else if (x === y && y === z) {
+var triangleType = function(x, y, z) {
+  if (x === y && y === z) {
     return "an equilateral";
   } else if (x === y || y === z || z === x) {
     return "an isoceles";
-  } else
+  } else {
     return "a scalene";
-};
+  }
+}
 
 $(document).ready(function() {
   $("form#triangle").submit(function(event) {
@@ -18,7 +27,7 @@ $(document).ready(function() {
     var z = parseInt($("input#z").val());
 
     var results = triangle(x,y,z);
-    console.log('test');
+
 
     // if (!result) {
     //   $(".not").text("not");
